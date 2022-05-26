@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nerc-ocp-infra-cluster-scope
+spec:
+  destination:
+    name: nerc-ocp-infra
+    namespace: openshift-gitops
+  project: default
+  source:
+    path: cluster-scope/overlays/nerc-ocp-infra
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
