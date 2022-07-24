@@ -4,5 +4,6 @@ namespace: openshift-gitops
 
 resources:
   - cluster-scope
+  - dex
   - openshift-gitops
   - vault
