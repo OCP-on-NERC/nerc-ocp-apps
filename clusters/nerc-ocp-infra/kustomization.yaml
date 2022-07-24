@@ -6,3 +6,4 @@ resources:
   - cluster-scope
   - openshift-gitops
   - vault
+  - acm
