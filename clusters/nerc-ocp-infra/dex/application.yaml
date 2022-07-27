@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dex
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: dex/overlays/nerc-ocp-infra
+  destination:
+    name: nerc-ocp-infra
+    namespace: dex
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=false
