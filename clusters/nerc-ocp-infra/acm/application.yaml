@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nerc-ocp-infra-acm
+spec:
+  destination:
+    name: nerc-ocp-infra
+    namespace: multicluster-engine
+  project: default
+  source:
+    path: acm/overlays/nerc-ocp-infra
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
