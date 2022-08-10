@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: xdmod-ingestor
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: moc-xdmod
+              image: moc-xdmod
+              imagePullPolicy: IfNotPresent
+              command:
+                - "/usr/bin/xdmod-run-ingestor.sh"
+              volumeMounts:
+                - name: vol-xdmod-conf
+                  mountPath: /etc/xdmod
+                - name: vol-clouds-yaml
+                  mountPath: /etc/openstack
+                - name: vol-xdmod-init
+                  mountPath: /mnt/xdmod_init
+                - name: vol-var-log-xdmod
+                  mountPath: /var/log/xdmod
+          restartPolicy: Never
+          backoffLimit: 1
+          volumes:
+            - name: vol-xdmod-init
+              configMap:
+                items:
+                  - key: xdmod_init.json
+                    path: xdmod_init.json
+                name: cm-xdmod-init-json
+            - name: vol-xdmod-conf
+              emptyDir: {}
+            - name: vol-clouds-yaml
+              emptyDir: {}
+            - name: vol-var-log-xdmod
+              emptyDir: {}

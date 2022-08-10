@@ -1,0 +1,42 @@
+{
+    "admin_account": {
+        "admin_username": "Admin",
+        "admin_password": "pass",
+        "first_name": "ad",
+        "last_name": "min",
+        "email_address": "nobody@massopen.cloud"
+    },
+    "general_settings": {
+        "site_address": "localhost",
+        "contact_email_address": "nobody@massopen.cloud",
+        "center_logo_path": "",
+        "enable_dashboard": "off"
+    },
+    "organization": {
+        "name": "Mass Open Cloud",
+        "abbreviation": "MOC"
+    },
+    "database": {
+        "host": "mariadb",
+        "xdmod_password": "pass",
+        "admin_password": "pass"
+    },
+    "resource": [
+        {
+            "name": "xdmodtest",
+            "formal_name": "XDMod Test Data",
+            "type": "cloud"
+        },
+        {
+            "name": "nerc_openstack",
+            "formal_name": "NERC OpenStack",
+            "auth_url": "https://stack.nerc.mghpcc.org:13000",
+            "type": "cloud"
+        },
+        {
+            "name": "kaizen",
+            "formal_name": "MOC Kaizen",
+            "type": "cloud"
+        }
+    ]
+}

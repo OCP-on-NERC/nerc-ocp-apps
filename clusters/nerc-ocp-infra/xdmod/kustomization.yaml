@@ -1,0 +1,33 @@
+commonLabels:
+  app: xdmod
+namespace: xdmod
+
+resources:
+  - is-xdmod.yaml
+  - bc-xdmod.yaml
+  - pvc-mariadb.yaml
+  - pvc-xdmod-conf.yaml
+  - pvc-xdmod-src.yaml
+  - pvc-xdmod-data.yaml
+  - pvc-clouds-yaml.yaml
+  - pvc-httpd-conf.yaml
+  - svc-mariadb.yaml
+  - svc-xdmod.yaml
+  - deployment-mariadb.yaml
+  - deployment-xdmod.yaml
+  - route-xdmod.yaml
+
+configMapGenerator:
+  - name: cm-xdmod-init-json
+    files:
+      - xdmod_init.json
+  - name: cm-httpd-conf
+    files:
+      - httpd.conf
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    type: generated
+  annotations:
+    note: generated
+

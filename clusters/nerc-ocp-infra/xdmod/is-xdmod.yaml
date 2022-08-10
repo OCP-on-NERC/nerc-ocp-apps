@@ -1,0 +1,10 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: moc-xdmod
+  name: moc-xdmod
+  namespace: xdmod
+spec:
+  lookupPolicy:
+    local: true

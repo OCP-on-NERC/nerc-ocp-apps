@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moc-xdmod
+spec:
+  selector:
+    matchLabels:
+      app: xdmod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: xdmod
+    spec:
+      containers:
+        - image: moc-xdmod
+          name: xdmod
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: vol-xdmod-conf
+              mountPath: /etc/xdmod
+            - name: vol-xdmod-src
+              mountPath: /usr/share/xdmod
+            - name: vol-xdmod-data
+              mountPath: /root/xdmod_data
+            - name: vol-httpd-conf
+              mountPath: /etc/httpd
+            - name: vol-clouds-yaml
+              mountPath: /etc/openstack
+            - name: vol-httpd-conf
+              mountPath: /root/httpd
+            - name: vol-var-log-xdmod
+              mountPath: /var/log/xdmod
+            - name: vol-var-log-httpd
+              mountPath: /var/log/httpd
+            - name: vol-run-httpd
+              mountPath: /run/httpd
+      # This is purely for convenience - not needed
+      #     - name: vol-nerc-shift-0-cred
+      #       readOnly: true
+      #       mountPath: "/root/resources/nerc_shift_0/"
+      initContainers:
+        - image: moc-xdmod
+          name: xdmod-init-1
+          imagePullPolicy: IfNotPresent
+          command:
+            - "/usr/bin/xdmod-init"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: vol-xdmod-conf
+              mountPath: /mnt/xdmod_conf
+            - name: vol-clouds-yaml
+              mountPath: /mnt/clouds
+            - name: vol-httpd-conf
+              mountPath: /mnt/httpd_conf
+            - name: vol-xdmod-src
+              mountPath: /mnt/xdmod_src
+            - name: vol-xdmod-data
+              mountPath: /root/xdmod_data
+            - name: vol-httpd-cm
+              mountPath: /root/httpd
+            - name: vol-xdmod-init
+              mountPath: /root/xdmod_init
+        - image: moc-xdmod
+          name: xdmod-init-2
+          imagePullPolicy: IfNotPresent
+          command:
+            - "/usr/bin/xdmod-init"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: vol-xdmod-conf
+              mountPath: /etc/xdmod
+            - name: vol-xdmod-src
+              mountPath: /usr/share/xdmod
+            - name: vol-xdmod-data
+              mountPath: /root/xdmod_data
+            - name: vol-httpd-conf
+              mountPath: /etc/httpd
+            - name: vol-clouds-yaml
+              mountPath: /etc/openstack
+            - name: vol-httpd-conf
+              mountPath: /root/httpd
+      #     - name: vol-nerc-shift-0-cred
+      #       readOnly: true
+      #       mountPath: "/root/resources/nerc_shift_0/"
+      volumes:
+        - name: vol-xdmod-conf
+          persistentVolumeClaim:
+            claimName: pvc-xdmod-conf
+        - name: vol-clouds-yaml
+          persistentVolumeClaim:
+            claimName: pvc-clouds-yaml
+        - name: vol-httpd-conf
+          persistentVolumeClaim:
+            claimName: pvc-httpd-conf
+        - name: vol-xdmod-src
+          persistentVolumeClaim:
+            claimName: pvc-xdmod-src
+        - name: vol-xdmod-data
+          persistentVolumeClaim:
+            claimName: pvc-xdmod-data
+        - name: vol-var-log-xdmod
+          emptyDir: {}
+        - name: vol-var-log-httpd
+          emptyDir: {}
+        - name: vol-run-httpd
+          emptyDir: {}
+        - name: vol-xdmod-init
+          configMap:
+            items:
+              - key: xdmod_init.json
+                path: xdmod_init.json
+            name: cm-xdmod-init-json
+        - name: vol-httpd-cm
+          configMap:
+            items:
+              - key: httpd.conf
+                path: httpd.conf
+            name: cm-httpd-conf
+      # - name: vol-nerc-shift-0-cred
+      #   secret:
+      #     secretName: xdmod-os-app-cred
