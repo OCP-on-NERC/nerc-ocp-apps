@@ -1,7 +1,6 @@
 commonLabels:
   app: xdmod
 namespace: xdmod
-
 resources:
   - is-xdmod.yaml
   - bc-xdmod.yaml
@@ -16,7 +15,6 @@ resources:
   - deployment-mariadb.yaml
   - deployment-xdmod.yaml
   - route-xdmod.yaml
-
 configMapGenerator:
   - name: cm-xdmod-init-json
     files:
@@ -30,4 +28,3 @@ generatorOptions:
     type: generated
   annotations:
     note: generated
-
