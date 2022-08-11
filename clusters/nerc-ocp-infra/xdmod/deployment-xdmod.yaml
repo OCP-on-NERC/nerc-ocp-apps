@@ -38,10 +38,6 @@ spec:
               mountPath: /var/log/httpd
             - name: vol-run-httpd
               mountPath: /run/httpd
-              # This is purely for convenience - not needed
-              # - name: vol-nerc-shift-0-cred
-              #   readOnly: true
-              #   mountPath: "/root/resources/nerc_shift_0/"
       initContainers:
         - image: moc-xdmod
           name: xdmod-init-1
@@ -85,9 +81,6 @@ spec:
               mountPath: /etc/openstack
             - name: vol-httpd-conf
               mountPath: /root/httpd
-              # - name: vol-nerc-shift-0-cred
-              #   readOnly: true
-              #   mountPath: "/root/resources/nerc_shift_0/"
       volumes:
         - name: vol-xdmod-conf
           persistentVolumeClaim:
@@ -122,6 +115,3 @@ spec:
               - key: httpd.conf
                 path: httpd.conf
             name: cm-httpd-conf
-            # - name: vol-nerc-shift-0-cred
-            #   secret:
-            #     secretName: xdmod-os-app-cred
