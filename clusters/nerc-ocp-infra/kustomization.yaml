@@ -8,3 +8,4 @@ resources:
   - openshift-gitops
   - vault
   - acm
+  - xdmod
