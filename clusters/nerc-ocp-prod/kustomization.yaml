@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../lib/cluster-scope
 - ../lib/logging
+- acct-mgt
 - fake-metrics-server
 
 nameSuffix: -prod
