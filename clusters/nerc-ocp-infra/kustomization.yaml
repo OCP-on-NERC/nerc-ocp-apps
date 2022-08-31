@@ -8,3 +8,6 @@ resources:
   - openshift-gitops
   - vault
   - acm
+  - loki
+  - logging
+  - grafana
