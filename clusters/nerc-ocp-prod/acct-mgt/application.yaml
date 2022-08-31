@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acct-mgt
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: acct-mgt/overlays/nerc-ocp-prod
+  destination:
+    name: nerc-ocp-prod
+    namespace: acct-mgt
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=false
