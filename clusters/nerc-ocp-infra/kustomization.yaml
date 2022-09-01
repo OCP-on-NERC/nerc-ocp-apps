@@ -9,3 +9,6 @@ resources:
   - vault
   - acm
   - xdmod
+  - loki
+  - logging
+  - grafana
