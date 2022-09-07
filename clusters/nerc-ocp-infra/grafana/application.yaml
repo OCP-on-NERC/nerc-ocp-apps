@@ -10,7 +10,7 @@ spec:
     path: grafana/overlays/nerc-ocp-infra
   destination:
     name: nerc-ocp-infra
-    namespace: openshift-operators-redhat
+    namespace: grafana
   syncPolicy:
     automated:
       prune: true
