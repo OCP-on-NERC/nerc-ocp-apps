@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: logging-prod
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: logging/overlays/nerc-ocp-prod
+  destination:
+    name: nerc-ocp-prod
+    namespace: openshift-logging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=false

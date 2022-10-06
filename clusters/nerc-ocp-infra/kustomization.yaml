@@ -10,5 +10,5 @@ resources:
   - acm
   - xdmod
   - loki
-  - logging
+  - logging-infra
   - grafana
