@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: logging
+  labels:
+    nerc.mghpcc.org/sync-policy: common
 spec:
   project: default
   source:
@@ -11,9 +13,3 @@ spec:
   destination:
     name: nerc-ocp-infra
     namespace: openshift-logging
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - Validate=false

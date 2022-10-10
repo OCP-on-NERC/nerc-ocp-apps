@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nerc-ocp-infra-openshift-gitops
+  labels:
+    nerc.mghpcc.org/sync-policy: common
 spec:
   destination:
     name: nerc-ocp-infra
@@ -11,8 +13,3 @@ spec:
     path: openshift-gitops/overlays/nerc-ocp-infra
     repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      selfHeal: true
-    syncOptions:
-      - ApplyOutOfSyncOnly=true

@@ -3,3 +3,17 @@ kind: Kustomization
 resources:
 - cluster-scope/
 - logging/
+
+patches:
+  - target:
+      kind: Application
+      labelSelector: "nerc.mghpcc.org/sync-policy=common"
+    patch: |
+      - op: add
+        path: /spec/syncPolicy
+        value:
+          automated:
+            selfHeal: true
+            prune: false
+          syncOptions:
+            - ApplyOutOfSyncOnly=true
