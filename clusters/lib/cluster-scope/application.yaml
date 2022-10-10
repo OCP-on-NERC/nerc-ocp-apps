@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nerc-ocp-prod-cluster-scope
+  name: cluster-scope
   labels:
     nerc.mghpcc.org/sync-policy: common
 spec:
   destination:
-    name: nerc-ocp-prod
+    name: SET IN OVERLAY
     namespace: openshift-gitops
   project: default
   source:
+    path: SET IN OVERLAY
     repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
-    path: cluster-scope/overlays/nerc-ocp-prod
     targetRevision: HEAD
