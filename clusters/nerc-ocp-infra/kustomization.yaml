@@ -3,15 +3,17 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
-  - cluster-scope
+  - ../lib/cluster-scope
+  - ../lib/logging
   - dex
   - openshift-gitops
   - vault
   - acm
   - xdmod
   - loki
-  - logging
   - grafana
+
+nameSuffix: -infra
 
 patches:
   - target:
@@ -25,3 +27,26 @@ patches:
             selfHeal: true
           syncOptions:
             - ApplyOutOfSyncOnly=true
+
+  - target:
+      kind: Application
+    patch: |
+      - op: replace
+        path: /spec/destination/name
+        value: nerc-ocp-infra
+
+  - target:
+      kind: Application
+      name: cluster-scope
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: cluster-scope/overlays/nerc-ocp-infra
+
+  - target:
+      kind: Application
+      name: logging
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: logging/overlays/nerc-ocp-infra
