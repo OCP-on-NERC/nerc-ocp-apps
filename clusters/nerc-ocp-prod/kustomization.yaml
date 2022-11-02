@@ -5,6 +5,7 @@ resources:
 - ../lib/logging
 - acct-mgt
 - fake-metrics-server
+- xdmod-reader
 
 nameSuffix: -prod
 
