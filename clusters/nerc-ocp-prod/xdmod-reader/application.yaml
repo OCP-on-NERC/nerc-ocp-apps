@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: xdmod-reader
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: xdmod-reader
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    path: xdmod-reader/overlays/nerc-ocp-prod
+    targetRevision: HEAD
