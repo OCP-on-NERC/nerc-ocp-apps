@@ -12,6 +12,7 @@ resources:
   - xdmod
   - loki
   - grafana
+  - hammerdb
 
 nameSuffix: -infra
 

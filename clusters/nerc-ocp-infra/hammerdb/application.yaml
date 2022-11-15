@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hammerdb
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/CCI-MOC/k-hammer.git
+    targetRevision: HEAD
+    path: k8s/hammerdb
+  destination:
+    name: nerc-ocp-infra
+    namespace: hammerdb
