@@ -12,6 +12,7 @@ resources:
   - xdmod
   - loki
   - grafana
+  - hostpath-provisioner
 
 nameSuffix: -infra
 
