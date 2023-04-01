@@ -5,6 +5,8 @@ resources:
 - ../lib/logging
 - ../lib/ipmi-exporter
 - ../lib/ceph-exporter
+- ../lib/gatekeeper
+- gatekeeper-policy
 - acct-mgt
 - fake-metrics-server
 - xdmod-reader
@@ -62,3 +64,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: gatekeeper
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: gatekeeper-system/overlays/nerc-ocp-prod

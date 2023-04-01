@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatekeeper
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/gatekeeper.git
+    targetRevision: HEAD
+    path: REPLACEME
+  destination:
+    name: REPLACEME
+    namespace: gatekeeper-system
