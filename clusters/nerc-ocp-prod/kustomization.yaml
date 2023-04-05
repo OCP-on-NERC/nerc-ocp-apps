@@ -4,6 +4,7 @@ resources:
 - ../lib/cluster-scope
 - ../lib/logging
 - ../lib/ipmi-exporter
+- ../lib/ceph-exporter
 - acct-mgt
 - fake-metrics-server
 - xdmod-reader
@@ -49,6 +50,14 @@ patches:
   - target:
       kind: Application
       name: ipmi-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: ceph-exporter
     patch: |
       - op: replace
         path: /spec/source/path
