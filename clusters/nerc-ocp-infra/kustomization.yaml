@@ -5,6 +5,7 @@ namespace: openshift-gitops
 resources:
   - ../lib/cluster-scope
   - ../lib/logging
+  - ../lib/ceph-exporter
   - dex
   - openshift-gitops
   - vault
@@ -51,3 +52,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: logging/overlays/nerc-ocp-infra
+
+  - target:
+      kind: Application
+      name: ceph-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-infra
