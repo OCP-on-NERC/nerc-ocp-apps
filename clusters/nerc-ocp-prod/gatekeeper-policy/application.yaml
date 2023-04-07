@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatekeeper-policy
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: gatekeeper-system
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/gatekeeper.git
+    path: policy/overlays/nerc-ocp-prod
+    targetRevision: HEAD
