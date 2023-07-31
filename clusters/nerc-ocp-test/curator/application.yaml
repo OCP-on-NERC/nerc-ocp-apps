@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: curator
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: curator/overlays/nerc-ocp-test
+  destination:
+    name: nerc-ocp-test
+    namespace: curator
