@@ -12,6 +12,7 @@ resources:
 - acct-mgt
 - fake-metrics-server
 - xdmod-reader
+- software-application-innovation-lab-sail-projects-fcd6dfa
 
 nameSuffix: -prod
 
