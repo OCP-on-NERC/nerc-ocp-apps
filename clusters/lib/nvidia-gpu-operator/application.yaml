@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nvidia-gpu-operator
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OCP-on-NERC/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: REPLACEME
+  destination:
+    name: REPLACEME
+    namespace: nvidia-gpu-operator

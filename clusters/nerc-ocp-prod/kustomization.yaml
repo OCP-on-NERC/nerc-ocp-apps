@@ -7,6 +7,7 @@ resources:
 - ../lib/ceph-exporter
 - ../lib/gatekeeper
 - ../lib/nfd-operator
+- ../lib/nvidia-gpu-operator
 - gatekeeper-policy
 - acct-mgt
 - fake-metrics-server
@@ -81,3 +82,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: nfd-operator/overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: nvidia-gpu-operator
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nvidia-gpu-operator/overlays/nerc-ocp-prod
