@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../lib/cluster-scope
   - ../lib/nfd-operator
+  - ../lib/nvidia-gpu-operator
   - curator
   - koku-metrics-operator
 
@@ -43,3 +44,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: nfd-operator/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: nvidia-gpu-operator
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nvidia-gpu-operator/overlays/nerc-ocp-test
