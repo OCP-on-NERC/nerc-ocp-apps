@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: smart-village-faeeb6c
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: smart-village-faeeb6c
+  project: default
+  source:
+    repoURL: https://github.com/OCP-on-NERC/smart-village-app.git
+    path: smart-village/overlays/nerc-ocp-prod
+    targetRevision: HEAD

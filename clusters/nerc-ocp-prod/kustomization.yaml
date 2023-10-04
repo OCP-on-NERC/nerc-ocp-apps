@@ -13,6 +13,8 @@ resources:
 - fake-metrics-server
 - xdmod-reader
 - openshift-custom-metrics-autoscaler-controller
+- software-application-innovation-lab-sail-projects-fcd6dfa
+- smart-village-faeeb6c
 
 nameSuffix: -prod
 

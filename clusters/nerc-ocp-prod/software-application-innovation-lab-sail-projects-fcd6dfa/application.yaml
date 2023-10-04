@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: software-application-innovation-lab-sail-projects-fcd6dfa
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: software-application-innovation-lab-sail-projects-fcd6dfa
+  project: default
+  source:
+    repoURL: https://github.com/OCP-on-NERC/PEcAn-app.git
+    path: pecan/overlays/nerc-ocp-prod
+    targetRevision: HEAD
