@@ -12,6 +12,7 @@ resources:
 - acct-mgt
 - fake-metrics-server
 - xdmod-reader
+- openshift-custom-metrics-autoscaler-controller
 
 nameSuffix: -prod
 
