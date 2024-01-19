@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: disable-aslr
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: rhods-notebooks
+  project: default
+  source:
+    repoURL: https://github.com/IsaiahStapleton/disable-aslr-nerc.git
+    path: disable-aslr/overlays/nerc-ocp-prod
+    targetRevision: HEAD
