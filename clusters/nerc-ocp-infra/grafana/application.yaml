@@ -13,3 +13,9 @@ spec:
   destination:
     name: nerc-ocp-infra
     namespace: grafana
+  ignoreDifferences:
+  - kind: Secret
+    name: grafana-serviceaccount-token
+    namespace: grafana
+    jsonPointers:
+    - /data
