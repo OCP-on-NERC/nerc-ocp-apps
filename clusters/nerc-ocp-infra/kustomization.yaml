@@ -10,7 +10,6 @@ resources:
   - openshift-gitops
   - vault
   - acm
-  - xdmod
   - loki
   - grafana
   - hostpath-provisioner
