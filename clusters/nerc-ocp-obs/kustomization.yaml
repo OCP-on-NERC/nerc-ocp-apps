@@ -4,6 +4,8 @@ resources:
 - ../lib/cluster-scope
 - ../lib/logging
 - loki
+- fake-metrics-server
+
 
 nameSuffix: -obs
 
