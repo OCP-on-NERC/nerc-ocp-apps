@@ -8,6 +8,7 @@ resources:
 - ../lib/gatekeeper
 - ../lib/nfd-operator
 - ../lib/nvidia-gpu-operator
+- ../lib/nerc-images
 - gatekeeper-policy
 - acct-mgt
 - fake-metrics-server
