@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault
+  name: vault-instance
   labels:
     nerc.mghpcc.org/sync-policy: common
 spec:
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
     targetRevision: HEAD
-    path: vault/overlays/nerc-ocp-infra
+    path: vault/instance/overlays/nerc-ocp-infra
   destination:
     name: nerc-ocp-infra
     namespace: vault
