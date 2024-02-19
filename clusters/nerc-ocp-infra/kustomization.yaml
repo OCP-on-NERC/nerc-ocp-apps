@@ -8,11 +8,13 @@ resources:
   - ../lib/ceph-exporter
   - dex
   - openshift-gitops
-  - vault
   - acm
   - loki
   - grafana
   - hostpath-provisioner
+  - vault-operator
+  - vault-instance
+  - vault-backup-job
 
 nameSuffix: -infra
 
