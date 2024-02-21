@@ -13,3 +13,9 @@ spec:
   destination:
     name: REPLACEME
     namespace: openshift-nfd
+  ignoreDifferences:
+    - group: nfd.openshift.io
+      kind: NodeFeatureDiscovery
+      jsonPointers:
+        - /spec/topologyupdater
+        - /spec/topologyUpdater
