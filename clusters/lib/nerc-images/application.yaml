@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nerc-images
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: redhat-ods-applications
+  project: default
+  source:
+    repoURL: https://github.com/nerc-images/nerc-images.git
+    path: overlays/nerc-ocp-prod
+    targetRevision: HEAD
