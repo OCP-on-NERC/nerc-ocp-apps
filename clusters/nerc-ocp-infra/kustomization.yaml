@@ -15,6 +15,7 @@ resources:
   - vault-operator
   - vault-instance
   - vault-backup-job
+  - vault-config
 
 nameSuffix: -infra
 
