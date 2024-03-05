@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../lib/cluster-scope
 - ../lib/logging
+- dex
 - loki
 - fake-metrics-server
 
