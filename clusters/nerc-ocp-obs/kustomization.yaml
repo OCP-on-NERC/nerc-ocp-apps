@@ -6,7 +6,7 @@ resources:
 - dex
 - loki
 - fake-metrics-server
-
+- grafana
 
 nameSuffix: -obs
 
