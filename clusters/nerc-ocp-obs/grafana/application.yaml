@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: grafana/overlays/nerc-ocp-obs
+  destination:
+    name: nerc-ocp-obs
+    namespace: grafana
+  ignoreDifferences:
+  - kind: Secret
+    name: grafana-serviceaccount-token
+    namespace: grafana
+    jsonPointers:
+    - /data
