@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ope-autograder
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-prod
+    namespace: ece440spring2024-619f12
+  project: default
+  source:
+    repoURL: https://github.com/IsaiahStapleton/ope-autograder-nerc-app.git
+    path: manifests
+    targetRevision: HEAD
