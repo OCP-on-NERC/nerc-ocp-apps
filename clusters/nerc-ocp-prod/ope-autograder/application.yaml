@@ -11,5 +11,5 @@ spec:
   project: default
   source:
     repoURL: https://github.com/IsaiahStapleton/ope-autograder-nerc-app.git
-    path: manifests
+    path: ope-autograder/overlays/nerc-ocp-prod
     targetRevision: HEAD
