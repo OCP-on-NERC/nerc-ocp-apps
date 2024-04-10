@@ -11,7 +11,9 @@ resources:
 - ../lib/nerc-images
 - gatekeeper-policy
 - acct-mgt
+- curator
 - fake-metrics-server
+- koku-metrics-operator
 - xdmod-reader
 - openshift-custom-metrics-autoscaler-controller
 - serverless
