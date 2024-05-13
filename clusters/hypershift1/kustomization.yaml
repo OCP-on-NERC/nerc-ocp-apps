@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../lib/cluster-scope
+
+nameSuffix: -hypershift1
+
+patches:
+  - target:
+      kind: Application
+      labelSelector: "nerc.mghpcc.org/sync-policy=common"
+    patch: |
+      - op: add
+        path: /spec/syncPolicy
+        value:
+          automated:
+            selfHeal: true
+          syncOptions:
+            - ApplyOutOfSyncOnly=true
+
+  - target:
+      kind: Application
+    patch: |
+      - op: replace
+        path: /spec/destination/name
+        value: hypershift1
+
+  - target:
+      kind: Application
+      name: cluster-scope
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: cluster-scope/overlays/hypershift1
