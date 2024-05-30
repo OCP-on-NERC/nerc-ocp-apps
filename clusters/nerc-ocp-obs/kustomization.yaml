@@ -8,6 +8,7 @@ resources:
 - fake-metrics-server
 - grafana
 - keycloak
+- prom-keycloak-proxy
 
 nameSuffix: -obs
 
