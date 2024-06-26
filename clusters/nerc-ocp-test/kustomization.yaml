@@ -5,8 +5,6 @@ resources:
   - ../lib/nfd-operator
   - ../lib/nvidia-gpu-operator
   - ../lib/logging
-  - curator
-  - koku-metrics-operator
 
 nameSuffix: -test
 
