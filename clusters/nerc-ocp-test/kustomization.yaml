@@ -5,6 +5,7 @@ resources:
   - ../lib/nfd-operator
   - ../lib/nvidia-gpu-operator
   - ../lib/logging
+  - ../lib/virt
 
 nameSuffix: -test
 
@@ -59,3 +60,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: logging/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: virt
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: virt/overlays/nerc-ocp-test
