@@ -6,6 +6,8 @@ resources:
   - ../lib/nvidia-gpu-operator
   - ../lib/logging
   - ../lib/virt
+  - ../lib/nfs
+  - ../lib/csi-driver-nfs
 
 nameSuffix: -test
 
@@ -68,3 +70,19 @@ patches:
       - op: replace
         path: /spec/source/path
         value: virt/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: nfs
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nfs/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: csi-driver-nfs
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: csi-driver-nfs/overlays/nerc-ocp-test
