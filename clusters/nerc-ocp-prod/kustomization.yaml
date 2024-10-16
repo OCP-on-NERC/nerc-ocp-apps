@@ -9,6 +9,7 @@ resources:
 - ../lib/nfd-operator
 - ../lib/nvidia-gpu-operator
 - ../lib/nerc-images
+- ../lib/autopilot
 - gatekeeper-policy
 - acct-mgt
 - curator
@@ -97,3 +98,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: nvidia-gpu-operator/overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: autopilot
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: autopilot/overlays/nerc-ocp-prod
