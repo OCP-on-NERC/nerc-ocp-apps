@@ -8,6 +8,7 @@ resources:
   - ../lib/virt
   - ../lib/nfs
   - ../lib/csi-driver-nfs
+  - ../lib/autopilot
 
 nameSuffix: -test
 
@@ -86,3 +87,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: csi-driver-nfs/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: autopilot
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: autopilot/overlays/nerc-ocp-test

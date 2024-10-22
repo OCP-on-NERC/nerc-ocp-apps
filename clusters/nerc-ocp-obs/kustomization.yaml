@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../lib/cluster-scope
 - ../lib/logging
+- ../lib/autopilot
 - dex
 - loki
 - fake-metrics-server
@@ -47,3 +48,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: logging/overlays/nerc-ocp-obs
+
+  - target:
+      kind: Application
+      name: autopilot
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: autopilot/overlays/nerc-ocp-obs
