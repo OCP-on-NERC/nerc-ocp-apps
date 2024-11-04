@@ -9,7 +9,6 @@ resources:
   - dex
   - openshift-gitops
   - acm
-  - loki
   - grafana
   - hostpath-provisioner
   - vault-operator
