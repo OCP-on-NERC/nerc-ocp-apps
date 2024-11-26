@@ -9,6 +9,8 @@ resources:
   - ../lib/nfs
   - ../lib/csi-driver-nfs
   - ../lib/autopilot
+  - dex
+  - minio
 
 nameSuffix: -test
 
