@@ -5,6 +5,7 @@ resources:
 - ../lib/logging
 - ../lib/autopilot
 - dex
+- minio
 - loki
 - fake-metrics-server
 - grafana
