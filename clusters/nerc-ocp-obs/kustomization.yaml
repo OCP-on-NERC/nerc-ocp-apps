@@ -4,6 +4,7 @@ resources:
 - ../lib/cluster-scope
 - ../lib/logging
 - ../lib/autopilot
+- ../lib/opentelemetry
 - dex
 - minio
 - loki
@@ -58,3 +59,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: autopilot/overlays/nerc-ocp-obs
+
+  - target:
+      kind: Application
+      name: opentelemetry
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: opentelemetry/overlays/nerc-ocp-obs
