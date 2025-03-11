@@ -5,6 +5,7 @@ resources:
 - ../lib/logging
 - ../lib/autopilot
 - ../lib/opentelemetry
+- ../lib/snmp-exporter
 - dex
 - minio
 - loki
@@ -67,3 +68,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: opentelemetry/overlays/nerc-ocp-obs
+
+  - target:
+      kind: Application
+      name: snmp-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: snmp-exporter/overlays/nerc-ocp-obs
