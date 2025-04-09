@@ -7,7 +7,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   syncPolicy:
     preserveResourcesOnDeletion: false
-    applicationsSync: "sync" 
+    applicationsSync: "sync"
   generators:
   - git:
       repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
