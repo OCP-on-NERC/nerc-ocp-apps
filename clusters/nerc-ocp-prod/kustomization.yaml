@@ -10,6 +10,7 @@ resources:
 - ../lib/nvidia-gpu-operator
 - ../lib/nerc-images
 - ../lib/autopilot
+- ../lib/ccb-operator-crds
 - gatekeeper-policy
 - acct-mgt
 - curator
@@ -106,3 +107,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: autopilot/overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: ccb-operator-crds
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-prod
