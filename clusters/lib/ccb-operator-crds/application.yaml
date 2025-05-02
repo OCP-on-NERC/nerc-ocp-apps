@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ccb-operator-crds
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: SET IN OVERLAY
+    namespace: openshift-gitops
+  project: default
+  source:
+    path: SET IN OVERLAY
+    repoURL: https://github.com/OCP-on-NERC/nerc-vega-ccb-operator-crds.git
+    targetRevision: HEAD
