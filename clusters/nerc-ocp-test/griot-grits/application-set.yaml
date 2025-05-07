@@ -3,8 +3,6 @@ kind: ApplicationSet
 metadata:
   name: griot-and-grits-apps
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
   syncPolicy:
     preserveResourcesOnDeletion: false
   generators:
