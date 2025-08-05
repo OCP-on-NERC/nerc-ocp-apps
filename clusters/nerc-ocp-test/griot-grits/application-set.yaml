@@ -13,9 +13,9 @@ spec:
       - path: applications/*/kustomization.yaml
   template:
     metadata:
-      name: '{{.path.basename}}'
+      name: '{{path.basename}}'
       labels:
-        app.kubernetes.io/name: '{{.path.basename}}'
+        app.kubernetes.io/name: '{{path.basename}}'
         app.kubernetes.io/component: griot-and-grits
         app.kubernetes.io/part-of: griot-and-grits
         nerc.mghpcc.org/sync-policy: common
@@ -24,7 +24,7 @@ spec:
       source:
         repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
         targetRevision: main
-        path: '{{.path.path}}'
+        path: '{{path}}'
       destination:
         name: nerc-ocp-test
         namespace: 'griot-grits'
