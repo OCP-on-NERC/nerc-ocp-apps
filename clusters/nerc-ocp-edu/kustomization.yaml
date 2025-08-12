@@ -1,0 +1,113 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../lib/cluster-scope
+- ../lib/logging
+- ../lib/ipmi-exporter
+- ../lib/ceph-exporter
+- ../lib/gatekeeper
+- ../lib/nfd-operator
+- ../lib/nvidia-gpu-operator
+- ../lib/nerc-images
+- ../lib/autopilot
+- ../lib/ccb-operator-crds
+- gatekeeper-policy
+- acct-mgt
+- fake-metrics-server
+- koku-metrics-operator
+- openshift-custom-metrics-autoscaler-controller
+- serverless
+
+nameSuffix: -edu
+
+patches:
+  - target:
+      kind: Application
+      labelSelector: "nerc.mghpcc.org/sync-policy=common"
+    patch: |
+      - op: add
+        path: /spec/syncPolicy
+        value:
+          automated:
+            selfHeal: true
+          syncOptions:
+            - ApplyOutOfSyncOnly=true
+
+  - target:
+      kind: Application
+    patch: |
+      - op: replace
+        path: /spec/destination/name
+        value: nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: cluster-scope
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: cluster-scope/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: logging
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: logging/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: ipmi-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: ceph-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: gatekeeper
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: gatekeeper-system/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: nfd-operator
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nfd-operator/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: nvidia-gpu-operator
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nvidia-gpu-operator/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: autopilot
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: autopilot/overlays/nerc-ocp-edu
+
+  - target:
+      kind: Application
+      name: ccb-operator-crds
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-edu

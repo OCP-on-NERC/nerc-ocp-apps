@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: assign-class-label
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-edu
+    namespace: rhods-notebooks
+  project: default
+  source:
+    repoURL: https://github.com/OCP-on-NERC/BU-RHOAI.git
+    path: webhooks/assign-class-label
+    targetRevision: HEAD
