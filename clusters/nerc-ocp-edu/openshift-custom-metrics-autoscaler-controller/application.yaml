@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openshift-custom-metrics-autoscaler-controller
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    targetRevision: HEAD
+    path: openshift-custom-metrics-autoscaler-controller/overlays/nerc-ocp-edu
+  destination:
+    name: nerc-ocp-edu
+    namespace: openshift-keda

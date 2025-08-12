@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seccomp-profile-installer
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-edu
+    namespace: seccomp-profile-installer
+  project: default
+  source:
+    repoURL: https://github.com/IsaiahStapleton/k8s-seccomp-profile-installer.git
+    path: k8s-seccomp-profile-installer/overlays/nerc-ocp-edu
+    targetRevision: HEAD

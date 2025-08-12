@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fake-metrics-server
+  labels:
+    nerc.mghpcc.org/sync-policy: common
+spec:
+  destination:
+    name: nerc-ocp-edu
+    namespace: openshift-storage
+  project: default
+  source:
+    repoURL: https://github.com/ocp-on-nerc/nerc-ocp-config.git
+    path: fake-metrics-server/overlays/nerc-ocp-edu
+    targetRevision: HEAD
