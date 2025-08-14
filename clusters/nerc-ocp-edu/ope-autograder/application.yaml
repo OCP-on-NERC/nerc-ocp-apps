@@ -10,6 +10,6 @@ spec:
     namespace: ece440spring2024-619f12
   project: default
   source:
-    repoURL: https://github.com/IsaiahStapleton/ope-autograder-nerc-app.git
+    repoURL: https://github.com/OCP-on-NERC/ope-autograder-nerc-app.git
     path: ope-autograder/overlays/nerc-ocp-edu
     targetRevision: HEAD

@@ -10,6 +10,6 @@ spec:
     namespace: seccomp-profile-installer
   project: default
   source:
-    repoURL: https://github.com/IsaiahStapleton/k8s-seccomp-profile-installer.git
+    repoURL: https://github.com/OCP-on-NERC/k8s-seccomp-profile-installer.git
     path: k8s-seccomp-profile-installer/overlays/nerc-ocp-edu
     targetRevision: HEAD

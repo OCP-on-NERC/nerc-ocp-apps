@@ -10,6 +10,6 @@ spec:
     namespace: rhods-notebooks
   project: default
   source:
-    repoURL: https://github.com/IsaiahStapleton/disable-aslr-nerc.git
+    repoURL: https://github.com/OCP-on-NERC/disable-aslr-nerc.git
     path: disable-aslr/overlays/nerc-ocp-edu
     targetRevision: HEAD
