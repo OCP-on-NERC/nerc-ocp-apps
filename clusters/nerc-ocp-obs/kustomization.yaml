@@ -6,6 +6,7 @@ resources:
 - ../lib/autopilot
 - ../lib/opentelemetry
 - ../lib/snmp-exporter
+- ../lib/ipmi-exporter
 - dex
 - minio
 - loki
@@ -76,3 +77,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: snmp-exporter/overlays/nerc-ocp-obs
+
+  - target:
+      kind: Application
+      name: ipmi-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-obs

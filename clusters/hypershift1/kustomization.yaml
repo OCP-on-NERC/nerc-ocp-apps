@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ../lib/cluster-scope
+  - ../lib/ipmi-exporter
 
 nameSuffix: -hypershift1
 
@@ -32,3 +33,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: cluster-scope/overlays/hypershift1
+
+  - target:
+      kind: Application
+      name: ipmi-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/hypershift1
