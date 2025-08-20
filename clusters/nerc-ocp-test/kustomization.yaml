@@ -9,6 +9,7 @@ resources:
   - ../lib/nfs
   - ../lib/csi-driver-nfs
   - ../lib/autopilot
+  - ../lib/ipmi-exporter
   - dex
   - minio
   - griot-grits
@@ -98,3 +99,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: autopilot/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: ipmi-exporter
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: overlays/nerc-ocp-test
