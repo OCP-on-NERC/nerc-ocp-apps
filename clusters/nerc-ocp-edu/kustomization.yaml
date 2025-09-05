@@ -16,6 +16,7 @@ resources:
 - fake-metrics-server
 - openshift-custom-metrics-autoscaler-controller
 - serverless
+- assign-class-label
 
 nameSuffix: -edu
 
