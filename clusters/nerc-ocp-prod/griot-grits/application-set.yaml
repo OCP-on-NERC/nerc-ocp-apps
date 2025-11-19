@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: griot-and-grits-apps
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+  generators:
+  - git:
+      repoURL: https://github.com/OCP-on-NERC/griot-and-grits-infra.git
+      revision: main
+      files:
+      - path: applications/*/kustomization.yaml
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      labels:
+        app.kubernetes.io/name: '{{path.basename}}'
+        app.kubernetes.io/component: griot-and-grits
+        app.kubernetes.io/part-of: griot-and-grits
+        nerc.mghpcc.org/sync-policy: common
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        name: nerc-ocp-test
+        namespace: 'griot-grits-aa488b'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
