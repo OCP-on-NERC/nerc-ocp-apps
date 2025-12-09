@@ -7,7 +7,7 @@ spec:
     preserveResourcesOnDeletion: false
   generators:
   - git:
-      repoURL: https://github.com/OCP-on-NERC/griot-and-grits-infra.git
+      repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
       revision: main
       files:
       - path: applications/*/kustomization.yaml

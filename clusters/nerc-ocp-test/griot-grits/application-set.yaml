@@ -7,8 +7,8 @@ spec:
     preserveResourcesOnDeletion: false
   generators:
   - git:
-      repoURL: https://github.com/OCP-on-NERC/griot-and-grits-infra.git
-      revision: main
+      repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
+      revision: develop
       files:
       - path: applications/*/kustomization.yaml
   template:
@@ -23,7 +23,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
-        targetRevision: main
+        targetRevision: develop
         path: '{{path}}'
       destination:
         name: nerc-ocp-test
