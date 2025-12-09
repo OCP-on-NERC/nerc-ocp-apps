@@ -8,7 +8,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
-      revision: develop
+      revision: main
       files:
       - path: applications/*/kustomization.yaml
   template:
@@ -23,11 +23,11 @@ spec:
       project: default
       source:
         repoURL: https://github.com/griot-and-grits/griot-and-grits-infra.git
-        targetRevision: develop
+        targetRevision: main
         path: '{{path}}'
       destination:
-        name: nerc-ocp-test
-        namespace: 'griot-grits'
+        name: nerc-ocp-prod
+        namespace: 'griot-grits-aa488b'
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
