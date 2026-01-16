@@ -11,6 +11,8 @@ resources:
 - ../lib/nerc-images
 - ../lib/autopilot
 - ../lib/ccb-operator-crds
+- ../lib/nfs
+- ../lib/csi-driver-nfs
 - gatekeeper-policy
 - acct-mgt
 - curator
@@ -115,3 +117,19 @@ patches:
       - op: replace
         path: /spec/source/path
         value: overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: nfs
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: nfs/overlays/nerc-ocp-prod
+
+  - target:
+      kind: Application
+      name: csi-driver-nfs
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: csi-driver-nfs/overlays/nerc-ocp-prod
