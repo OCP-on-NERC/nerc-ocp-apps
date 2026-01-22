@@ -23,6 +23,7 @@ resources:
 - serverless
 - software-application-innovation-lab-sail-projects-fcd6dfa
 - smart-village-faeeb6c
+- assign-class-label
 
 nameSuffix: -prod
 
