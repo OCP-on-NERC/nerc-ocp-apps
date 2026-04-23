@@ -10,6 +10,8 @@ resources:
   - ../lib/csi-driver-nfs
   - ../lib/autopilot
   - ../lib/ipmi-exporter
+  - ../lib/opentelemetry
+  - ../lib/metering
   - dex
   - minio
   - griot-grits
@@ -107,3 +109,19 @@ patches:
       - op: replace
         path: /spec/source/path
         value: overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: opentelemetry
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: opentelemetry/overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: metering
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: metering/overlays/nerc-ocp-test
