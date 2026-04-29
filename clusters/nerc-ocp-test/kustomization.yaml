@@ -10,6 +10,7 @@ resources:
   - ../lib/csi-driver-nfs
   - ../lib/autopilot
   - ../lib/ipmi-exporter
+  - ../lib/costmanagement
   - dex
   - minio
   - griot-grits
@@ -107,3 +108,11 @@ patches:
       - op: replace
         path: /spec/source/path
         value: overlays/nerc-ocp-test
+
+  - target:
+      kind: Application
+      name: costmanagement
+    patch: |
+      - op: replace
+        path: /spec/source/path
+        value: costmanagement/overlays/nerc-ocp-test
