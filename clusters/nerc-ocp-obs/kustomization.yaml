@@ -15,6 +15,7 @@ resources:
 - keycloak
 - prom-keycloak-proxy
 - ai-telemetry
+- nerc-backup-wasabi
 
 nameSuffix: -obs
 
